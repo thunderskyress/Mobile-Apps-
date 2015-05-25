@@ -97,7 +97,7 @@
                         ItemTemplate="{StaticResource TrainingListBoxItemTemplate}" SelectionChanged="ChangeRouteHasselt" />
                 </phone:PivotItem>
 
-                <phone:PivotItem Header="StTruiden">
+                <phone:PivotItem Header="St-Truiden">
                     <ListBox
                         x:Name="SttruidenToDoItemsListBox" 
                         ItemsSource="{Binding StTruidenToDoItems}" 

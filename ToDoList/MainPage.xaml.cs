@@ -58,11 +58,7 @@ namespace ToDoList
             {
                 MyGeoPosition = await MyGeolocator.GetGeopositionAsync(TimeSpan.FromMinutes(1),TimeSpan.FromSeconds(10));
                 Mycoordinates.Add(new GeoCoordinate(MyGeoPosition.Coordinate.Latitude, MyGeoPosition.Coordinate.Longitude));
-                //MygeocodeQuery = new GeocodeQuery();
-                //MygeocodeQuery.SearchTerm = "Gruitroderbaan 51";
-                //MygeocodeQuery.GeoCoordinate = new GeoCoordinate(MyGeoPosition.Coordinate.Latitude, MyGeoPosition.Coordinate.Longitude);
-                //MygeocodeQuery.QueryCompleted += MygeocodeQuery_QueryCompleted;
-                //MygeocodeQuery.QueryAsync();
+               
             }
             catch (UnauthorizedAccessException)
             {
@@ -136,24 +132,20 @@ namespace ToDoList
 
         private void deleteTaskButton_Click(object sender, RoutedEventArgs e)
         {
-            // Cast the parameter as a button.
             var button = sender as Button;
 
             if (button != null)
             {
-                // Get a handle for the to-do item bound to the button.
                 ToDoItem toDoForDelete = button.DataContext as ToDoItem;
 
                 App.ViewModel.DeleteToDoItem(toDoForDelete);
             }
 
-            // Put the focus back to the main page.
             this.Focus();
         }
 
         protected override void OnNavigatedFrom(System.Windows.Navigation.NavigationEventArgs e)
         {
-            // Save changes to the database.
             App.ViewModel.SaveChangesToDB();
         }
 
@@ -170,11 +162,9 @@ namespace ToDoList
                 
                 string locatie;
                 
-                //locatie = "Gruitroderbaan 51";
-                //locatie = allToDoItemsListBox.SelectedIndex.ToString();
                 var selected = allToDoItemsListBox.SelectedValue as ToDoItem;
                 locatie = selected.ItemName;
-                //locatie = ((ListBoxItem)allToDoItemsListBox.SelectedItem).Content.ToString();
+                
                 MygeocodeQuery = new GeocodeQuery();
                 MygeocodeQuery.SearchTerm = locatie;
                 MygeocodeQuery.GeoCoordinate = new GeoCoordinate(MyGeoPosition.Coordinate.Latitude, MyGeoPosition.Coordinate.Longitude);

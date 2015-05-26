@@ -41,12 +41,9 @@ namespace ToDoList
                 locator.PositionChanged += locator_PositionChanged;
                 locator.StatusChanged += locator_StatusChanged;
             }
-            // Set the page DataContext property to the ViewModel.
+            
             this.DataContext = App.ViewModel;
 
-           
-            // Sample code to localize the ApplicationBar
-            //BuildLocalizedApplicationBar();
         }
 
         private async void GetCoordinates()
